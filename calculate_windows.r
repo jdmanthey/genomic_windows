@@ -20,7 +20,7 @@ input_file <- read.table(args[1], sep="\t", stringsAsFactors=F)
 input_file_genotypes <- input_file[,4:ncol(input_file)]
 
 # read in populations
-populations <- read.table(args[2], sep="\t", stringsAsFactors=F, header=T)
+populations <- read.table(args[2], stringsAsFactors=F, header=T)
 
 # define output name
 output_name <- paste(strsplit(args[1], ".simple")[[1]][1], "__stats.txt", sep="")
