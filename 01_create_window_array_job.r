@@ -7,6 +7,8 @@ max_number_jobs <- 200
 # vcf header location or file to extract the header (should be gzipped)
 vcf_header <- paste0(project_directory, "/CHR_30.recode.vcf.gz")
 
+# name of script to write
+output_script_name <- "stat50kbp_array.sh"
 
 # read in reference index
 # filtered to only include genotyped chromosomes
@@ -71,7 +73,7 @@ stat_helper <- data.frame(chrom=as.character(stat_helper1), start=as.numeric(sta
 write.table(stat_helper, file=paste(directory_name, "/stat_helper.txt", sep=""), quote=F, row.names=F, col.names=F)
 
 # write the array script
-a.script <- paste(directory_name, "/stat50kbp_array.sh", sep="")
+a.script <- paste(directory_name, "/", output_script_name, sep="")
 write("#!/bin/sh", file=a.script)
 write("#SBATCH --chdir=./", file=a.script, append=T)
 write(paste("#SBATCH --job-name=", "phylo", sep=""), file=a.script, append=T)
